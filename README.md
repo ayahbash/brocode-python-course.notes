@@ -8,7 +8,7 @@ print("hello world")
 ```
 ## 02. variables
 - a **variable** is a container for a value, it behaves as the value that it contains.
-### ♥️ srings
+### ♥️ strings
 ```python
 name = "Bro"
 print(type(name))
@@ -36,7 +36,7 @@ height=250.5
 print(height)
 ```
 ### ♥️ boolean
-> can only store **True** or **False**
+> can only store **True** or **False** values
 ```python
 human = False
 print(human)

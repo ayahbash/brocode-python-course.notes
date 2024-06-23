@@ -1,5 +1,5 @@
  # brocode's python full course notes 🐍♥️
-> these are my notes from BroCode's python course on youtube, formatted in markdown for readability. i'm creating these notes to refer back to them in the future, and they might also benefit others following the course. i may add a table of contents later. good luck to everyone!
+> these are my notes from BroCode's python course on youtube, formatted in markdown for readability. i'm creating these notes to refer back to them in the future, and they might also benefit others following the course. good luck to everyone!
  
  ## 🔗 [course link](https://youtu.be/XKHEtdqhLK8?si=IqUga8mt5dGJ7x4i) 
 ## 01. print function 

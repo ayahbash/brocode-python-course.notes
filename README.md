@@ -180,4 +180,80 @@ elif not(temp <0 or temp >30):
 ```
 ## 11. while loops
 
+- a **while** loop is a statement that will execute its block of code as long as its condition is true
 
+```python
+name = ""
+while len(name) == 0: # we can also write "while not name:"
+    name = input("Enter your name: ")
+print("Hello "+name)
+```
+## 12. for loops
+- a **for** loop is a statement that will execute its block of code a limited amount of times
+``` python
+for i in range(10):
+    print(i)
+```
+- **countdown timer**
+```python
+import time
+
+for seconds in range(10,0,-1):
+    print(seconds)
+    time.sleep(1)
+print("Happy New Year!")
+```
+
+## 13. nested loops
+```python
+rows = int(input("How many rows?: "))
+columns = int(input("How many columns?: "))
+symbol = input("Enter a symbol to use: ")
+
+for i in range(rows):
+    for j in range(columns):
+        print(symbol, end="") # to avoid making a new line
+    print()
+```
+
+## 14. loop control statements
+- used to *change* a loop's execution from its normal sequence
+```python
+# break = used to terminate the loop entirely
+# continue = skips to the next iteration of the loop
+# pass = does nothing, acts as a placeholder
+
+while True:
+    name = input("Enter your name: ")
+    if name !="":
+        break
+
+phone_number = "123-456-7890"
+for i in phone_number:
+    if i == "-":
+        continue
+    print(i, end="")
+
+for i in range(1,21):
+    if i == 13:
+        pass
+    else: print(i)
+```
+
+## 15. lists
+- **lists** are used to store multiple items in a single variable
+```python
+food = ["pizza", "hamburger", "hotdog"]
+
+food.append("ice cream")
+food.remove("hotdog")
+food.pop() #removes last element in list
+food.insert(0,"cake")
+food.sort()
+food.clear()
+
+print(food[0])
+
+for x in food:
+    print(x)
+```

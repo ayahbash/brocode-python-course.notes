@@ -257,3 +257,138 @@ print(food[0])
 for x in food:
     print(x)
 ```
+
+## 16. 2D lists
+- a **2D list** is basically a list of lists
+
+```python
+drinks = ["coffee", "soda", "tea"]
+dinner = ["pizza", "hamburger", "hotdog"]
+desert = ["cake", "ice cream"]
+
+food = [drinks, dinner, desert]
+print(food[0][1])
+print(food[1][1])
+```
+
+## 17. tuples
+- a **tuple** is a collection which is ordered and unchangeable, it's used to group together related data
+```python
+student = ("Bro", 21, "male")
+print(student.count("Bro")) 
+print(student.index("male"))
+
+for x in student:
+    print(x)
+
+if "Bro" in student:
+    print("Bro is here!")
+```
+
+## 18. sets
+- a **set** is a collection which is unordered, unindexed and doesn't include duplicare values
+
+```python
+utensils = {"fork", "spoon", "knife"}
+dishes = {"bowl", "plate", "cup", "knife"}
+
+utensils.add("napkin")
+utensils.remove("fork")
+utensils.clear()
+dishes.update(utensils)
+dinner_table = utensils.union(dishes)
+
+print(dishes.difference(utensils))
+print(utensils.intersection(dishes))
+
+for x in dinner_table:
+    print(x)
+```
+## 19. dictionaries
+- a **dictionary** is a changeable, unordered collection of unique *key:value* pairs. dictionaries are fast because they use hashing, which allows us to access a value quickly!
+
+```python
+capitals = {'USA':'Washington DC',
+            'India':'New Dehli',
+            'China': 'Beijing',
+            'Russia': 'Moscow'}
+print(capitals['Russia']) #this causes issues if not in dictionary. Get method better.
+print(capitals.get('Germany')) # this will return None if not there.
+print(capitals.keys()) # will print only the keys
+print(capitals.values()) # will print only the values
+print(capitals.items()) # will print all items
+
+for key, value in capitals.items(): # this will also print whole dictionary.
+    print(key, value)
+
+capitals.update({'Germany': 'Berlin'}) # way to add to dictionary.
+capitals.update({'USA': 'Las Vegas'}) # way to update or add to dictionary.
+capitals.pop('China') # removes key, value from dictionary.
+capitals.clear()
+```
+
+## 20. indexing
+- the **index operator** ```[]``` gives us access to a sequence's element (ex. strings, lists, tuples..)
+
+```python
+name = "bro Code!"
+if(name[0].islower()):
+    name = name.capitalize()
+print(name)
+
+first_name = name[:3].upper()
+last_name = name[4:].lower()
+last_character = name[-1]
+
+print(first_name)
+print(last_name)
+print(last_character)
+```
+
+## 21. functions!
+- a **function** is a block of code that is executed only when it is called
+
+```python
+def hello(first_name, last_name, age): # parameters
+    print("Hello "+first_name+" "+last_name)
+    print("You are "+ str(age) + " years old") # we need to convert it to string
+    print("Have a nice day!")
+
+hello("Bro", "Code", 21) # arguments
+```
+## 22. return statement
+- the **return** value is the value or object that a function sends back to the caller
+
+```python
+def multiply(number1, number2):
+    return number1 * number2 # the result
+
+x = multiply(6,8)
+print(x)
+```
+## 23. keyword arguments
+- arguments preceded by an identifier when passed to a function are known as **keyword arguments**; unlike positional arguments, their order does *not* matter, as python knows the names of the arguments that the function receives
+
+```python
+def hello(first,middle,last):
+    print("Hello "+first+" "+middle+" "+last)
+
+hello("Code", "Dude", "Bro") # positional arguments.
+hello(last="Code", middle="Dude", first="Bro") # keyword arguments.
+```
+## 24. nested function calls
+- **nested function calls** are when one function call is used as an argument for another function. these calls are resolved from the innermost to the outermost, with the return value of the inner function serving as the argument for the next outer function
+
+```python
+num = input("Enter a whole positive number: ")
+print(num)
+num = float(num)
+print(num)
+num = abs(num)
+print(num)
+num = round(num)
+print(num)
+# we can simplify all this using a nested function call
+print(round(abs(float(input("Enter a whole positive number: ")))))
+```
+## 25.

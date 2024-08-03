@@ -391,4 +391,202 @@ print(num)
 # we can simplify all this using a nested function call
 print(round(abs(float(input("Enter a whole positive number: ")))))
 ```
-## 25.
+## 25. variable scope
+- the region where a variable is recognized is called its **scope**. a variable is only available within the scope where it is created, and both global and local versions of a variable can be created
+
+```python
+name = "Bro" # global scope (available inside & outside functions)
+
+def display_name():
+    name = "Code" # local scope (available only inside this function)
+    print(name)
+
+# LEGB Rule: Local -> Enclosing -> Global -> Built-in
+display_name()
+print(name)
+``````
+
+## 26. *args
+- ***args** is a parameter that will pack all arguments into a tuple, it is useful so that a function can accept a varying amount of arguments
+
+```python
+def add(*stuff):
+    sum = 0
+    # stuff = list(stuff) # if you want to change an item in tuple, turn into list
+    #stuff[0] = 0    # this turns the 1st item to 0.
+    
+    for i in stuff:
+        sum += i
+    return sum
+
+print(add(1,2,3,4,5,6,7,8))
+```
+## 27. **kwargs
+- ****kwargs** is a parameter that will pack all arguments into a dictionary, it is useful so that a function can accept a varying amount of *keyword* arguments
+
+```python
+def hello(**kwargs):  # just need the two **, can name it anything
+    print("Hello "+ kwargs['first']+" "+kwargs['last'])
+    print("Hello",end=" ")
+    for key, value in kwargs.items():
+        print(value, end= " ")  # end=" " replaces the new line character (default) with space.
+
+hello(title="Mr.", first="Bro", middle="Dude", last="Code")
+```
+## 28. string format
+- the **```str.format()```** is an optional method that gives users more control when displaying outputs
+
+```python
+animal = "cow"
+item = "moon"
+
+# print("The "+animal+" jumped over the "+item)
+# a better way to write this would be using the str.format()
+
+print("The {} jumped over the {}".format(animal, item))
+print("The {0} jumped over the {1}".format(animal, item)) # positional argument
+print("The {food} jumped over the {house}".format(house="tall", food="pizza"))  # keyword argument
+
+# another way to format
+text = "The {} jumped over the {}"
+print(text.format(animal, item))
+
+name = "Bro"
+print("Hello, my name is {:10}".format(name))  # adding ten spacing worth of padding after name
+
+number = 3.14
+print("The number pi is {:.3f}".format(number))  #adds 3 deciminal places.
+print("The number is {:,}".format(number)) # adds commas
+print("The number is {:b}".format(number)) # displays it in binary
+print("The number is {:o}".format(number)) # displays it in octodecimal
+print("The number is {:X}".format(number)) # displays it in hexidicimal.
+print("The number is {:E}".format(number))
+```
+## 29. random numbers
+```python
+import random
+x = random.randint(1,6) # random integer  between 1 and 6
+y = random.random()     # random floating point number
+
+my_list = ['rock', 'paper', 'scissors']
+z = random.choice(my_list)
+
+cards = [1,2,3,4,5,6,7,8,9,'J','Q','K','A']
+random.shuffle(cards)
+print(cards)
+```
+
+## 30. exception handling
+- **exceptions** are events detected during execution that interrupt the flow of a program
+
+```python
+try:
+    numerator = int(input("Enter a number to divide: "))
+    denominator = int(input("Enter a number to divide by: "))
+    results = numerator / denominator
+except ZeroDivisionError:
+    print("You cannot divide by zero! Idiot!")
+except ValueError:
+    print("Enter only numbers please.")
+except Exception:  
+# good pratice to put specific exceptions first.
+    print("Something went wrong :(")
+else:
+    print(results)
+finally:  # should be at end as you want to close files when done
+    print("This will always execute")
+```
+## 31. file detection
+```python
+import os
+path = "C:\\Users\\Cakow\\Desktop\\test.txt"
+# need to manually put in double back slashes
+if os.path.exists(path):
+    print("That location exists!")
+    if os.path.isfile(path):
+        print("That is a file")
+    elif os.path.isdir(path):
+        print("That is a directory")
+else:
+    print("That location does not exist")
+```
+
+## 32. reading a file
+ ```python
+ try:
+    with open('test.txt') as file:  # will need file path and double-slashes if the file isn't here
+        print(file.read())  #'with' will also close files after reading them!
+except FileNotFoundError:
+    print("That file was not found")
+```
+## 33. writing a file
+```python
+text = "Hello \nThis is some text \nHave a good date!\n"# \n is a new line.
+with open('test.txt', 'w') as file: # by default the mode is r. but here it is set to w for write
+    # mode 'a' will append the new lines to the file
+  file.write(text)
+```
+
+## 34. copying a file
+```python
+# copyfile() = copies contents of a file
+# copy()     = copyfile(0 + persmission mode + destination can be a directory
+# copy2()    = copy() + copies metadata (file's creation and modification times)
+
+import shutil  # good module to copy files
+shutil.copyfile('test.txt', 'copy.txt') # this function has both a source and a destination
+# if the file is not here, you would need to list the file path
+```
+## 35. moving a file 
+```python
+import os
+source = "test.txt"
+destination = "C:\\Users\\Cakow\\Desktop\\test.txt"
+
+try: # recommended doing code in try/except block to handle issues!
+    if os.path.exists(destination):
+        print("There is already a file there")
+    else:
+        os.replace(source,destination)
+        print(source+" was moved")
+except FileNotFoundError:
+    print(source+" was not found")
+```
+## 36. deleting a file
+```python
+import os
+import shutil
+path = 'test.txt'
+
+try:
+    os.remove(path)     # delete a file
+  # os.rmdir(path)      # delete a file or empty folder
+  # shutil.rmtree(path) # delete directory and all files contained within
+except FileNotFoundError:
+    print("That file was not found")
+except PermissionError:
+    print("You do not have permission to delete that")
+except OSError:
+    print("That folder contains files")
+else:
+    print(path+" was deleted")
+```
+
+## 37. modules!
+- a **module** is a file containing python code; it can contain functions, classes.. modules are used with *modular programming*, which is used to separate a program into parts
+
+> in **messages.py**
+```python
+def hello():
+  print("Hello! Have a nice day!")
+
+def bye():
+  print("Bye! Have a wonderful time")
+```
+> in our **main** module
+```python
+import messages # can import messages (hello,bye) OR messages * (all of it)
+
+messages.hello()
+messages.bye()
+```
